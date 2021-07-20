@@ -6,42 +6,26 @@ namespace Chapter3_Studio
 {
     public class CharacterCounting
     {
-        public void findChars(char[] array) 
+        public void findChars(string sentence)
         {
-            var characters = new List<char>();
+            char[] charactersInString = sentence.ToLower().ToCharArray();
+            var dictionary = new Dictionary<char, int>();
 
-            foreach (char c in array)
+            foreach (char character in charactersInString) 
             {
-                if (!characters.Contains(c))
+                int count = sentence.ToLower().Split(character).Length - 1;  
+                if (!dictionary.ContainsKey(character))
                 {
-                    characters.Add(c);
-                }
-            }
-            
-            foreach(char character in characters)
-            {
-                Console.WriteLine(character);
-            }
-        }
-
-        public void numberOfChars(string sentence)
-        {
-            var charCounts = new List<int>();
-
-            for (int i = 0; i < sentence.Length; i++)
-            {
-                int count = sentence.ToLower().Split(sentence[i]).Length - 1;
-
-                if (!charCounts.Contains(count))
-                {
-                    charCounts.Add(count);
+                    dictionary.Add(character, count);
                 }
             }
 
-            foreach (int charCount in charCounts)
+            foreach (var pair in dictionary)
             {
-                Console.WriteLine(charCount);
+                Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
             }
         }
+
     }
 }
+

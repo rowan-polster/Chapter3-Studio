@@ -8,41 +8,19 @@ namespace Chapter3_Studio
     {
         static void Main(string[] args)
         {
-            var sentence = "this is a practice sentence";
-            char[] charactersInString = sentence.ToLower().ToCharArray(); 
-            var dictionary = new Dictionary<char, int>();
+            var sentence = "This is a practice sentence";
 
-            { 
+            //Console.WriteLine("Please enter a sentence for character-counting:\n");
 
-                for (int i = 0; i < charactersInString.Length; i++)
-                {
+            //string inputSentence = Console.ReadLine();
+            
+            {
 
-                    int count = sentence.Split(sentence[i]).Length;
-                    char characters = charactersInString[i];
+                var charactersInString = new CharacterCounting();
 
-                    if (!dictionary.ContainsKey(characters) && !dictionary.ContainsValue(count -1))
-                    {
-                        dictionary.Add(characters, count -1);
-                    }
+                charactersInString.findChars(sentence);
 
-
-
-                }
-
-                foreach(char character in charactersInString)
-                {
-                    int count = sentence.ToLower().Split(character).Length;
-                    if (!dictionary.ContainsKey(character))
-                    {
-                        dictionary.Add(character, count);
-                    }
-                }
-
-                foreach(var pair in dictionary)
-                {
-                    Console.WriteLine("KEY {0} VALUE {1}", pair.Key, pair.Value);
-                }
-
+              
 
 
 
